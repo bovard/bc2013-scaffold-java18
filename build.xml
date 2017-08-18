@@ -59,8 +59,8 @@
      classpathref="classpath.run" 
      destdir="${path.bin}" 
      srcdir="${path.teams}"
-	 target="1.6"
-	 source="1.6"
+	 target="1.8"
+	 source="1.8"
      debug="true">
       <compilerarg line="-Xlint"/>
     </javac>
