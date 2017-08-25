@@ -16,8 +16,6 @@
     <include name="*.jar"/>
   </fileset>
 
-  <fileset id="scala.files" dir="${path.lib}" includes="scala-*.jar"/>
-  <pathconvert property="scala" refid="scala.files" setonempty="false"/>
   
   <path id="classpath.run">
     <dirset dir="${path.bin}"/>
@@ -34,27 +32,7 @@
     <delete dir="${path.bin}"/>
   </target>
 
-  <target name="build-scala" if="scala">
-	<taskdef resource="scala/tools/ant/antlib.xml">
-		<classpath>
-			<fileset dir="${path.lib}">
-				<include name="scala-library-2.9.1.jar"/>
-				<include name="scala-compiler-2.9.1.jar"/>
-			</fileset>
-		</classpath>
-	</taskdef>
-		
-	<scalac
-		srcdir="${path.teams}"
-    	destdir="${path.bin}"
-    	target="jvm-1.5"
-		classpathref="classpath.run">
-		<include name="**/*.scala"/>
-		<include name="**/*.java"/>
-  	</scalac>
-  </target>
-
-  <target name="build" depends="-init,build-scala">
+  <target name="build" depends="-init">
     <javac 
      classpathref="classpath.run" 
      destdir="${path.bin}" 
